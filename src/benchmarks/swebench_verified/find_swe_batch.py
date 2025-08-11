@@ -88,5 +88,5 @@ def find_swe_batch(k=10, n_easy=5, n_medium=0, n_hard=0, p_medium=0.5):
 # Example usage
 if __name__ == "__main__":
     # Default behavior
-    instances = find_swe_batch(k=10, n_easy=5, n_medium=5, n_hard=5, p_medium=0.5)
+    instances = find_swe_batch(k=10, n_easy=5, n_medium=0, n_hard=0, p_medium=0.5)
     print("Selected instances:", instances)
