@@ -1,0 +1,3 @@
+# Version of the agent configuration standard
+version = "1.0"
+imports = ["agents/ask_open_aware.toml"]

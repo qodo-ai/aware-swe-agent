@@ -1,0 +1,11 @@
+Question
+How do React and Angular handle state management? Which approach is more efficient for large-scale applications?
+How do Axios and FastAPI handle error handling and what are the trade-offs between their approaches in a REST API context?
+Compare the templating engines used by Flask and FastAPI. How do they differ in terms of performance and ease of integration with frontend technologies?
+How do Pandas and HuggingFace Transformers manage large datasets for machine learning tasks? Which one is better suited for preprocessing text data at scale?
+How do the command-line interfaces (CLI) in Flask and FastAPI differ in terms of functionality and ease of use for deploying APIs?
+Compare the logging and debugging approaches in Webpack and React. Which framework offers more flexibility for debugging complex applications?
+How do LangChain and Haystack handle natural language processing tasks, and which one is better for building end-to-end machine learning pipelines?
+How do the API request handling mechanisms differ in Axios and Requests (used in FastAPI)? Which one offers more advanced features for API interactions?
+What are the differences in how Flask and FastAPI manage background tasks and asynchronous execution? Which framework would be better for a real-time application?
+How do the dependency injection systems in Angular and FastAPI compare? Which system offers more flexibility and scalability in managing services and components?

@@ -1,0 +1,30 @@
+version = "1.0"
+
+[commands.ask_open_aware]
+description = "Use the Open Qodo Aware tool to answer questions about open source repositories."
+
+instructions = """
+Given a question from the user, use the qodo_aware_context_retriever tool to explore relevant repositories and provide an answer.
+
+Guidelines:
+- If the user asks about a repository that you do not have access to, respond accordingly.
+- Save the final answer in a markdown file within an 'answers' directory (create if needed) within the current workspace, giving the file a meaningful name.
+"""
+
+execution_strategy = "act"
+
+arguments = [
+    { name = "question", type = "string", required = true, description = "The question the user asks" },
+    { name = "repos_name", type = "string", required = false, description = "The repository or repositories to focus on" }
+]
+
+available_tools = ["filesystem","qodo_aware_context_retriever"]
+
+output_schema = """
+{
+    "properties": {
+        "answer": {"type": "string", "description": "The answer to the question"},
+        "answer_md_path": {"type": "string", "description": "Path to the markdown file where the answer is saved"}
+    }
+}
+"""
