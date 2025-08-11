@@ -1,12 +1,11 @@
+# 🧠 Aware SWE Agent
 
-# 🧠 aware-swe-agent
-
-An **autonomous software engineering agent** designed to solve real-world software issues by leveraging deep contextual understanding of codebases and documentation. Powered by the **Aware** tool, it delivers smart, explainable, and high-impact code modifications.
+An **autonomous software engineering agent** designed to solve real-world software issues by leveraging deep contextual understanding of codebases and documentation. This repository demonstrates and open-sources **Qodo Aware** capabilities through comprehensive benchmarking tools and practical examples.
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/yourusername/aware-swe-agent?style=social" />
-  <img src="https://img.shields.io/github/license/yourusername/aware-swe-agent" />
-  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" />
+  <img src="https://img.shields.io/badge/Python-3.11+-green" />
+  <img src="https://img.shields.io/github/license/qodo-ai/aware-swe-agent" />
+  <img src="https://img.shields.io/badge/Qodo-Aware-orange" />
 </p>
 
 ---
@@ -20,10 +19,7 @@ An **autonomous software engineering agent** designed to solve real-world softwa
   Incorporates planning, code reading, generation, and validation modules.
 
 - 🛠️ **Aware Integration**  
-  Built on top of [Aware](https://aware.dev) for high-fidelity static + dynamic code understanding.
-
-- 🔍 **Explainable Code Changes**  
-  Outputs human-readable rationale for every proposed change.
+  Built on top of [Qodo Aware](https://aware.dev) for high-fidelity static + dynamic code understanding.
 
 - 🔄 **Multi-Step Autonomy**  
   Supports iterative task decomposition, planning, execution, and evaluation loops.
@@ -32,44 +28,134 @@ An **autonomous software engineering agent** designed to solve real-world softwa
 
 ## 📊 Benchmarks
 
-| Benchmark                     | Aware-SWE-Agent | SWE-agent (baseline) | GPT-Engineer |
-|------------------------------|------------------|----------------------|--------------|
-| Real-world Issue Resolution  | **74.1%**        | 61.5%                | 53.4%        |
-| Unit Test Coverage Post-Fix  | **93.8%**        | 81.3%                | 78.6%        |
-| Avg. Dev Time Saved (manual) | **42 min**       | 29 min               | 18 min       |
-| Passes Human Review          | **86.2%**        | 73.4%                | 69.1%        |
+| Benchmark              | Qodo-SWE-Agent | SWE-agent (baseline) | 
+|------------------------|----------------|----------------------|
+| **SWE-bench Verified** | **72.4%**      | 70.4%                | 
+| **DeepCodeBench**      | **TBD**        | TBD                  |
 
-> 📌 Benchmarks based on internal evaluation on 50 GitHub issues across open-source projects (2025-Q2).
 
+> 📌 SWE-bench Verified contains 500 high-quality, manually verified software engineering problems from real GitHub issues.
+
+> 📌 DeepCodeBench new benchmark dataset of real-world questions derived from large, complex code repositories.
+
+**📖 Learn More:** 
+- Read our detailed blog post about [How Qodo Command Achieved 72.4% on SWE-bench Verified](https://www.qodo.ai/blog/qodo-command-swe-bench-verified/) to understand our approach and methodology.
+- TBD - add DeepCodeBench blog post 
 ---
+### SWE-bench Agent Configuration
+
+The agent uses a Plan and Solve systematic approach:
+1. **Problem Analysis** - Read and understand the GitHub issue
+2. **Bug Reproduction** - Create scripts to reproduce the reported issue
+3. **Root Cause Analysis** - Use sequential thinking to identify core problems
+4. **Fix Implementation** - Apply targeted code modifications
+
 
 ## 📦 Installation
 
-```bash
-git clone https://github.com/yourusername/aware-swe-agent.git
-cd aware-swe-agent
-pip install -r requirements.txt
-```
+### Prerequisites
 
-You also need API access to [Aware](https://aware.dev) and optionally an OpenAI or Ollama-compatible model.
+- **Python 3.11+**
+- **Docker** (for SWE-bench evaluation)
+- **Node.js and npm** (for Qodo Command)
+- **Qodo API Key**
+
+### Setup
+
+```bash
+git clone https://github.com/qodo-ai/aware-swe-agent.git
+cd aware-swe-agent
+
+# Install Python dependencies
+pip install datasets docker python-dotenv swebench
+
+# Install Qodo Command CLI
+npm install -g @qodo/command
+
+# Set up environment
+echo "QODO_API_KEY=your_api_key_here" > .env
+```
 
 ---
 
 ## 🧪 Usage
 
-Run the agent on a repository and an issue:
+### SWE-bench Benchmarking
 
+**Run a single instance:**
 ```bash
-python run.py --repo_path ./example-repo --issue "Fix broken pagination on /orders route"
+cd src/benchmarks/swebench_verified
+python run_swe_instance.py django__django-11099
 ```
 
-Advanced options:
-
+**Run multiple instances:**
 ```bash
---aware_api_key <YOUR_KEY>      # Required
---llm_provider openai|ollama    # Optional
---plan_mode tree|sequential     # Optional planning strategy
+python run_swe_instances.py django__django-11099 requests__requests-2317 --max_concurrency 2
 ```
+
+### Aware Integration Examples
+
+**Ask questions about open source repositories:**
+```bash
+cd src/examples/aware_open_repos_analysis
+python ask_aware.py "How do React and Angular handle state management?"
+```
+
+**Use random example questions:**
+```bash
+python ask_aware.py --random
+```
+
+**Focus on specific repositories:**
+```bash
+python ask_aware.py "What are the best practices for error handling?" --repos "pandas,transformers"
+```
+
+---
+
+## 🎯 Examples: Open Source Repository Analysis
+
+The `src/examples/aware_open_repos_analysis` directory showcases **Qodo Aware's** powerful capabilities for analyzing and understanding open source repositories. This comprehensive example demonstrates how to:
+
+### 🔍 **Intelligent Repository Analysis**
+- **25+ Supported Repositories** including React, Angular, Pandas, HuggingFace Transformers, FastAPI, Flask, and more
+- **AI-Powered Question Answering** about code patterns, architecture, and best practices
+- **Comparative Analysis** between different frameworks and libraries
+
+### 📝 **Pre-built Example Questions**
+The system includes 10 carefully crafted example questions covering:
+- **Framework Comparisons**: "How do React and Angular handle state management?"
+- **Library Analysis**: "How do Pandas and HuggingFace Transformers manage large datasets?"
+- **Architecture Patterns**: "What are the best practices for error handling?"
+- **Performance Analysis**: "Compare templating engines performance"
+- **Integration Strategies**: "How do Flask and FastAPI handle background tasks?"
+
+### 📊 **Generated Outputs**
+Each query produces:
+- **Executive Summary** with key findings
+- **Detailed Comparisons** with code examples
+- **Best Practices** recommendations
+- **Architectural Insights** and patterns
+- **Performance Considerations**
+
+### 🚀 **Getting Started with Examples**
+```bash
+cd src/examples/aware_open_repos_analysis
+
+# Try a framework comparison
+python ask_aware.py "Compare Flask and FastAPI for building APIs"
+
+# Analyze specific repositories
+python ask_aware.py "How does error handling work?" --repos "pandas,transformers"
+
+# Use a random example question
+python ask_aware.py --random
+
+# See all supported repositories
+cat open_source_supported_repos.csv
+```
+
+This example demonstrates the power of **Qodo Aware** in understanding complex codebases and providing intelligent, contextual answers about software engineering practices across the open source ecosystem.
 
 ---
 
@@ -78,46 +164,33 @@ Advanced options:
 ```
 aware-swe-agent/
 │
-├── agent/             # Core agent logic (planner, executor, analyzer)
-├── integrations/      # Aware SDK, LLM wrappers, tools
-├── benchmarks/        # Evaluation framework & datasets
-├── examples/          # Example repos, tasks, and outputs
-├── tests/             # Unit tests and regression checks
-└── run.py             # CLI entrypoint
+├── src/
+│   ├── benchmarks/
+│   │   └── swebench_verified/     # SWE-bench Verified benchmark implementation
+│   │       ├── run_swe_instance.py      # Single instance execution
+│   │       ├── run_swe_instances.py     # Batch processing
+│   │       ├── utils.py                 # Docker management utilities
+│   │       ├── template_qodo_command_swe_agent.toml  # Agent configuration
+│   │       └── logs/                    # Execution logs and results
+│   │
+│   └── examples/
+│       └── aware_open_repos_analysis/   # Aware integration examples
+│           ├── ask_aware.py             # Main script for asking questions
+│           ├── agent.toml               # Agent configuration
+│           ├── example_questions.csv    # Sample questions
+│           ├── open_source_supported_repos.csv  # Supported repositories
+│           ├── agents/                  # Agent configurations
+│           └── answers/                 # Generated answers and reports
+│
+├── .env                    # Environment variables
+├── LICENSE                 # MIT License
+└── README.md              # This file
 ```
 
----
 
-## 🧠 Powered By
 
-- [Aware](https://aware.dev) — context graph & program analysis
-- [OpenAI](https://openai.com) / [Ollama](https://ollama.ai) — language models
-- [LangChain](https://github.com/langchain-ai/langchain) — orchestration
-- [GitPython](https://gitpython.readthedocs.io) — Git integration
-
----
-
-## 🛤️ Roadmap
-
-- [ ] Auto-evaluation pipeline for PR quality
-- [ ] Fine-tuned dev agent using reinforcement learning
-- [ ] GitHub App deployment mode
-- [ ] Multi-repo / microservice navigation
-
----
-
-## 🙌 Contributing
-
-We welcome contributions! Please check out the [CONTRIBUTING.md](CONTRIBUTING.md) guide and open issues or PRs for discussion.
-
----
-
-## 📄 License
-
-MIT License. See [LICENSE](LICENSE) for details.
-
----
 
 <p align="center">
-  Built with 💚 by Qodo Aware Team
+  Built with 💚 by the Qodo Team<br>
+  <em>Empowering developers with AI-driven software engineering</em>
 </p>
