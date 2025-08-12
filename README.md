@@ -15,11 +15,15 @@ An **autonomous software engineering agent** designed to solve real-world softwa
 - 💡 **Context-Aware Intelligence**  
   Ingests full repositories, issues, and documentation to build a deep contextual map.
 
+
 - 🧩 **Modular Autonomy Stack**  
   Incorporates planning, code reading, generation, and validation modules.
 
+
+
 - 🛠️ **Aware Integration**  
   Built on top of [Qodo Aware](https://aware.dev) for high-fidelity static + dynamic code understanding.
+
 
 - 🔄 **Multi-Step Autonomy**  
   Supports iterative task decomposition, planning, execution, and evaluation loops.
@@ -30,6 +34,9 @@ An **autonomous software engineering agent** designed to solve real-world softwa
 ### Quick Start
 
 ```bash
+git clone git@github.com:qodo-ai/aware-swe-agent.git
+cd aware-swe-agent
+
 # Install the package and dependencies
 pip install -e .
 
@@ -39,7 +46,7 @@ npm install -g @qodo/command
 # Login to Qodo Command
 qodo login
 
-# For SWE-bench instances - set up also QODO_API_KEY
+# Optional: for SWE-bench instances evaluation  - set up also QODO_API_KEY
 echo "QODO_API_KEY=your_api_key_here" > .env
 ```
 ### Validate Installation with Qodo Aware analysis example
