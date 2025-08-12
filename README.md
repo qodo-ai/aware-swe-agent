@@ -25,6 +25,116 @@ An **autonomous software engineering agent** designed to solve real-world softwa
   Supports iterative task decomposition, planning, execution, and evaluation loops.
 
 ---
+## 📦 Installation
+
+### Quick Start
+
+```bash
+# Install the package and dependencies
+pip install -e .
+
+# Install Qodo Command
+npm install -g @qodo/command
+
+# Login to Qodo Command
+qodo login
+
+# For SWE-bench instances - set up also QODO_API_KEY
+echo "QODO_API_KEY=your_api_key_here" > .env
+```
+### Validate Installation with Qodo Aware analysis example
+
+```bash
+#Use random example questions:
+ask-aware --random
+```
+
+### Prerequisites
+
+- **Python 3.11+**
+- **Node.js and npm** (for Qodo Command)
+- **Docker** (optional, for SWE-bench evaluation)
+- **Qodo User**
+
+---
+
+## 🧪 Usage
+
+## 🎯 Examples: Open Source Repository Analysis
+
+The `src/examples/aware_open_repos_analysis` directory showcases **Qodo Aware's** powerful capabilities for analyzing and understanding open source repositories. This comprehensive example demonstrates how to:
+
+### 🔍 **Intelligent Repository Analysis**
+- **25+ Supported Repositories** including React, Angular, Pandas, HuggingFace Transformers, FastAPI, Flask, and more
+- **AI-Powered Question Answering** about code patterns, architecture, and best practices
+- **Comparative Analysis** between different frameworks and libraries
+
+### 📝 **Pre-built Example Questions**
+The system includes 10 carefully crafted example questions covering:
+- **Framework Comparisons**: "How do React and Angular handle state management?"
+- **Library Analysis**: "How do Pandas and HuggingFace Transformers manage large datasets?"
+- **Architecture Patterns**: "What are the best practices for error handling?"
+- **Performance Analysis**: "Compare templating engines performance"
+- **Integration Strategies**: "How do Flask and FastAPI handle background tasks?"
+
+### 📊 **Generated Outputs**
+Each query produces:
+- Session log file 
+- A markdown file with the research output
+
+### 🚀 **Getting Started with Examples**
+```bash
+# Try a framework comparison
+ask-aware "Compare Flask and FastAPI for building APIs"
+
+# Analyze specific repositories
+ask-aware "How does error handling work?" --repos "pandas,transformers"
+
+# Use a random example question
+ask-aware --random
+
+# See all supported repositories (from the examples directory)
+cat src/aware_swe_agent/examples/aware_open_repos_analysis/open_source_supported_repos.csv
+```
+
+This example demonstrates the power of **Qodo Aware** in understanding complex codebases and providing intelligent, contextual answers about software engineering practices across the open source ecosystem.
+
+---
+
+### SWE-bench Benchmarking
+
+**Run a single instance:**
+```bash
+aware-swe-run-instance django__django-11099
+```
+
+**Run multiple instances:**
+```bash
+aware-swe-run-instances django__django-11099 requests__requests-2317 --max_concurrency 2
+```
+
+**Find batch instances:**
+```bash
+aware-swe-find-batch
+```
+
+### Aware Integration Examples
+
+**Ask questions about open source repositories:**
+```bash
+ask-aware "How do React and Angular handle state management?"
+```
+
+**Use random example questions:**
+```bash
+ask-aware --random
+```
+
+**Focus on specific repositories:**
+```bash
+ask-aware "What are the best practices for error handling?" --repos "pandas,transformers"
+```
+---
 
 ## 📊 Benchmarks
 
@@ -49,113 +159,6 @@ The agent uses a Plan and Solve systematic approach:
 2. **Bug Reproduction** - Create scripts to reproduce the reported issue
 3. **Root Cause Analysis** - Use sequential thinking to identify core problems
 4. **Fix Implementation** - Apply targeted code modifications
-
-
-## 📦 Installation
-
-### Prerequisites
-
-- **Python 3.11+**
-- **Docker** (for SWE-bench evaluation)
-- **Node.js and npm** (for Qodo Command)
-- **Qodo API Key**
-
-### Setup
-
-```bash
-git clone https://github.com/qodo-ai/aware-swe-agent.git
-cd aware-swe-agent
-
-# Install Python dependencies
-pip install datasets docker python-dotenv swebench
-
-# Install Qodo Command CLI
-npm install -g @qodo/command
-
-# Set up environment
-echo "QODO_API_KEY=your_api_key_here" > .env
-```
-
----
-
-## 🧪 Usage
-
-### SWE-bench Benchmarking
-
-**Run a single instance:**
-```bash
-cd src/benchmarks/swebench_verified
-python run_swe_instance.py django__django-11099
-```
-
-**Run multiple instances:**
-```bash
-python run_swe_instances.py django__django-11099 requests__requests-2317 --max_concurrency 2
-```
-
-### Aware Integration Examples
-
-**Ask questions about open source repositories:**
-```bash
-cd src/examples/aware_open_repos_analysis
-python ask_aware.py "How do React and Angular handle state management?"
-```
-
-**Use random example questions:**
-```bash
-python ask_aware.py --random
-```
-
-**Focus on specific repositories:**
-```bash
-python ask_aware.py "What are the best practices for error handling?" --repos "pandas,transformers"
-```
-
----
-
-## 🎯 Examples: Open Source Repository Analysis
-
-The `src/examples/aware_open_repos_analysis` directory showcases **Qodo Aware's** powerful capabilities for analyzing and understanding open source repositories. This comprehensive example demonstrates how to:
-
-### 🔍 **Intelligent Repository Analysis**
-- **25+ Supported Repositories** including React, Angular, Pandas, HuggingFace Transformers, FastAPI, Flask, and more
-- **AI-Powered Question Answering** about code patterns, architecture, and best practices
-- **Comparative Analysis** between different frameworks and libraries
-
-### 📝 **Pre-built Example Questions**
-The system includes 10 carefully crafted example questions covering:
-- **Framework Comparisons**: "How do React and Angular handle state management?"
-- **Library Analysis**: "How do Pandas and HuggingFace Transformers manage large datasets?"
-- **Architecture Patterns**: "What are the best practices for error handling?"
-- **Performance Analysis**: "Compare templating engines performance"
-- **Integration Strategies**: "How do Flask and FastAPI handle background tasks?"
-
-### 📊 **Generated Outputs**
-Each query produces:
-- **Executive Summary** with key findings
-- **Detailed Comparisons** with code examples
-- **Best Practices** recommendations
-- **Architectural Insights** and patterns
-- **Performance Considerations**
-
-### 🚀 **Getting Started with Examples**
-```bash
-cd src/examples/aware_open_repos_analysis
-
-# Try a framework comparison
-python ask_aware.py "Compare Flask and FastAPI for building APIs"
-
-# Analyze specific repositories
-python ask_aware.py "How does error handling work?" --repos "pandas,transformers"
-
-# Use a random example question
-python ask_aware.py --random
-
-# See all supported repositories
-cat open_source_supported_repos.csv
-```
-
-This example demonstrates the power of **Qodo Aware** in understanding complex codebases and providing intelligent, contextual answers about software engineering practices across the open source ecosystem.
 
 ---
 

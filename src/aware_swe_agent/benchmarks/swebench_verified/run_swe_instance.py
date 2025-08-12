@@ -6,7 +6,7 @@ import random
 from pathlib import Path
 from dotenv import load_dotenv
 import json
-from utils import (
+from .utils import (
     get_problem_statement,
     start_container,
     create_agent_toml_in_container,
@@ -188,4 +188,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

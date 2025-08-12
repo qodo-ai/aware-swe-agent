@@ -3,7 +3,7 @@ import json
 import subprocess
 import shutil
 import random
-from utils import get_swebench_verified_data
+from .utils import get_swebench_verified_data
 
 def clone_repo_to_tmp():
     tmp_dir = '/tmp/swebench_repo'
@@ -85,8 +85,11 @@ def find_swe_batch(k=10, n_easy=5, n_medium=0, n_hard=0, p_medium=0.5):
     shutil.rmtree(tmp_dir)
     return result
 
-# Example usage
-if __name__ == "__main__":
+def main():
     # Default behavior
     instances = find_swe_batch(k=10, n_easy=5, n_medium=0, n_hard=0, p_medium=0.5)
     print("Selected instances:", instances)
+
+# Example usage
+if __name__ == "__main__":
+    main()

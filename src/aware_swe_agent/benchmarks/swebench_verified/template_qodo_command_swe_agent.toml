@@ -68,7 +68,6 @@ Follow these steps methodically:
 
 
 
-
 available_tools = ["shell_ext", "filesystem", "ripgrep","sequential-thinking"]
 
 mcpServers = """

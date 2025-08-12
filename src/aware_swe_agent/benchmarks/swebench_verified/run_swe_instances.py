@@ -3,7 +3,7 @@ import logging
 import random
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from run_swe_instance import predict, eval
+from .run_swe_instance import predict, eval
 
 def run_predictions(instance_ids, predictions_path, session_logs_dir, max_concurrency):
     futures = []

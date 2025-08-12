@@ -1,0 +1,8 @@
+# Core dependencies
+datasets>=2.0.0
+docker>=6.0.0
+python-dotenv>=1.0.0
+swebench>=2.0.0
+
+# Optional dependencies for file locking (recommended)
+portalocker>=2.0.0

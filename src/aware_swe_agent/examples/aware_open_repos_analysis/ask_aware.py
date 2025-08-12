@@ -124,9 +124,9 @@ def parse_json_response(response_text):
             # The key fix: preserve escaped sequences before replacing newlines
             # Use placeholders that won't appear in normal text
             placeholders = {
-                '\\\\n': '___NEWLINE___',
-                '\\\\r': '___CARRIAGE___',
-                '\\\\t': '___TAB___',
+                '\\\\\\n': '___NEWLINE___',
+                '\\\\\\r': '___CARRIAGE___',
+                '\\\\\\t': '___TAB___',
                 '\\\\"': '___QUOTE___',
                 '\\\\\\\\': '___BACKSLASH___'
             }
