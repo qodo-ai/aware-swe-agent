@@ -1,0 +1,26 @@
+version="1.0"
+
+[modes.solve_mode]
+description = "identify files to modify"
+instructions = """
+You are principal software Eng.
+
+your task is to edit the code and solve issues based on a plan and analysis we run in plan mode before you
+
+
+"""
+
+available_tools = ["shell_ext", "filesystem", "ripgrep"]
+
+mcpServers = """
+{
+  "shell_ext": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-shell"
+    ]
+  }
+}
+
+"""

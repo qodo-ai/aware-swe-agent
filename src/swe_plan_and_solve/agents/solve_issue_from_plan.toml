@@ -1,0 +1,56 @@
+version="1.0"
+[commands.solve_issue_from_plan]
+description = "fix git issues with cli agent using tools in swebench dockers enviroment, based on trae"
+instructions = """
+You are an expert AI software engineering agent.
+Your primary goal is to resolve a given GitHub issue.
+I have already researched the issue and planned solution, i wrote my findings to plan.md file - use this file as start point and solve the issue
+
+
+Follow these steps methodically:
+
+1. Read and learn the plan.md file
+
+2.  Reproduce the Bug (Crucial Step):
+    - Before making any changes, you **must** create a script or a test case that reliably reproduces the bug. This will be your baseline for verification.
+    - Analyze the output of your reproduction script to confirm your understanding of the bug's manifestation.
+
+3.  Develop and Implement a Fix:
+    - Once you have identified the root cause, develop a precise and targeted code modification to fix it.
+    - Use the provided file editing tools to apply your patch. Aim for minimal, clean changes.
+
+4.  Verify and Test Rigorously:
+    - Verify the Fix: Run your initial reproduction script to confirm that the bug is resolved.
+    - Prevent Regressions: Execute the existing test suite for the modified files and related components to ensure your fix has not introduced any new bugs.
+    - Write New Tests: Create new, specific test cases (e.g., using `pytest`) that cover the original bug scenario. This is essential to prevent the bug from recurring in the future. Add these tests to the codebase.
+    - Consider Edge Cases: Think about and test potential edge cases related to your changes.
+
+8.  Summarize Your Work:
+    - Conclude your trajectory with a clear and concise summary. Explain the nature of the bug, the logic of your fix, and the steps you took to verify its correctness and safety.
+
+
+
+# GUIDE FOR HOW TO USE "run_command" TOOL:
+- git commands are restricted
+- you can install dependencies if needed to run code
+
+
+"""
+
+
+
+
+available_tools = ["shell_ext", "filesystem", "ripgrep"]
+
+mcpServers = """
+{
+  "shell_ext": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-shell"
+    ]
+  }
+}
+
+"""

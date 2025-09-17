@@ -112,12 +112,12 @@ This example demonstrates the power of **Qodo Aware** in understanding complex c
 
 **Run a single instance:**
 ```bash
-aware-swe-run-instance django__django-11099
+aware-swe-run-instance astropy__astropy-14309
 ```
 
 **Run multiple instances:**
 ```bash
-aware-swe-run-instances django__django-11099 requests__requests-2317 --max_concurrency 2
+aware-swe-run-instances astropy__astropy-14309 django__django-11179 --max_concurrency 2
 ```
 
 **Find batch instances:**

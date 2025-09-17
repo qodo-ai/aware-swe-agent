@@ -1,0 +1,26 @@
+version="1.0"
+
+[modes.plan_mode]
+description = "identify files to modify"
+instructions = """
+You are principal software Eng.
+
+your task is to plan a solution for a given code issue,
+
+think like principal software Eng. - consider the root cuase of the issue, help the user understand the issue and the right fix
+
+use the deep-research tool to search the code base
+"""
+
+available_tools = ["remote-codebase-search"]
+
+
+mcpServers = """
+{
+ "remote-codebase-search":
+    {
+      "command": "/Users/tomeryanay/.pyenv/shims/mcp-proxy",
+      "args": ["http://0.0.0.0:8002/mcp", "--transport=streamablehttp"]
+    }
+}
+"""

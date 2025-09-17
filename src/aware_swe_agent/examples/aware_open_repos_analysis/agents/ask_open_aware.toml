@@ -4,9 +4,10 @@ version = "1.0"
 description = "Use the Open Qodo Aware tool to answer questions about open source repositories."
 
 instructions = """
-Given a question from the user, use the qodo_aware_context_retriever tool to explore relevant repositories and provide an answer.
+Given a question from the user, use the deep-research and other remote-code-base tools to explore relevant repositories and provide an answer.
 
 Guidelines:
+- You can run the tools multiple times with different quearies, if needed - till you get sufficient answer for the user request
 - If the user asks about a repository that you do not have access to, respond accordingly.
 - Save the final answer in a markdown file within an 'answers' directory (create if needed) within the current workspace, giving the file a meaningful name.
 """
@@ -18,13 +19,23 @@ arguments = [
     { name = "repos_name", type = "string", required = false, description = "The repository or repositories to focus on" }
 ]
 
-available_tools = ["filesystem","qodo_aware_context_retriever"]
+available_tools = ["filesystem","remote-codebase-search"]
 
 output_schema = """
 {
     "properties": {
         "answer": {"type": "string", "description": "The answer to the question"},
         "answer_md_path": {"type": "string", "description": "Path to the markdown file where the answer is saved"}
+    }
+}
+"""
+
+mcpServers = """
+{
+ "remote-codebase-search":
+    {
+      "command": "/Users/tomeryanay/.pyenv/shims/mcp-proxy",
+      "args": ["http://0.0.0.0:8002/mcp", "--transport=streamablehttp"]
     }
 }
 """

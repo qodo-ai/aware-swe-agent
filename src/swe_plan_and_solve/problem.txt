@@ -1,0 +1,4 @@
+[Bug]: DPI of a figure is doubled after unpickling on M1 Mac
+### Bug summary
+
+When a figure is unpickled, it's dpi is doubled. This behaviour happens every time and if done in a loop it can cause an `OverflowError`.

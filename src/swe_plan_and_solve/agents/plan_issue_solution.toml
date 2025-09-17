@@ -1,0 +1,53 @@
+version="1.0"
+
+[commands.plan_issue_solution]
+description = "identify files to modify"
+instructions = """
+Consider code repository matplotlib/matplotlib Consider the following issue description:
+
+<issue_description>
+[Bug]: DPI of a figure is doubled after unpickling on M1 Mac
+### Bug summary
+
+When a figure is unpickled, it's dpi is doubled. This behaviour happens every time and if done in a loop it can cause an `OverflowError`.
+</issue_description>
+
+Task:
+Your goal is to explore the repository and identify all files that need to be edited in order to resolve the given issue.
+Addressing the issue root cause rather than just the described issue symptoms.
+
+Instructions:
+
+- Analyze the issue thoroughly, Focus on understanding the root cause of the issue, not just the immediate problem presented.
+
+- Explore the repo with respect to the issue and determine which codebase areas can be relevant
+
+- Decide wich files in the code base are relevant to fixing the issue or have relevant context the solver need to consider.
+
+
+**Do not make any code changes.**
+
+**USE THE deep_research TOOL to explore the repo, understand the root cause of the issue, and decide which files in the code base are relevant to fixing the issue or have relevant context the solver need to consider.**
+
+When you have identified the files, and plan options for fix, prefer general fix for the root cuase over a "patch" fix -
+create md file in the workspace directory - "plan.md" this file would pass to solver agent that would solve the issue according to your plan, and sould include:
+- Issue Summary
+- Root Cause Analysis
+- Files That Need to Be Modified and important context
+- Proposed Solution Options
+- Recommended Implementation Plan
+"""
+
+available_tools = ["filesystem", "remote-codebase-search"]
+
+execution_strategy = "act"
+
+mcpServers = """
+{
+ "remote-codebase-search":
+    {
+      "command": "/Users/tomeryanay/.pyenv/shims/mcp-proxy",
+      "args": ["http://0.0.0.0:8002/mcp", "--transport=streamablehttp"]
+    }
+}
+"""
